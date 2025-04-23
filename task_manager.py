@@ -13,7 +13,7 @@ def add_task(title, description="", due_date=""):
     :param description: (Optional) Description of the task
     :param due_date: (Optional) Due date of the task
     """
-    tasks = load_tasks()  # Load existing tasks
+    tasks = load_tasks()
     # Generate a unique ID by finding the max existing ID and adding 1
     task_id = max([task["id"] for task in tasks], default=0) + 1
     # Define the new task dictionary
@@ -21,11 +21,11 @@ def add_task(title, description="", due_date=""):
         "id": task_id,
         "title": title,
         "description": description,
-        "status": "Pending",  # Default status
+        "status": "Pending",
         "due_date": due_date,
     }
-    tasks.append(new_task)  # Add the new task to the list
-    save_tasks(tasks)  # Save updated task list
+    tasks.append(new_task)
+    save_tasks(tasks)
     print(f"Task '{title}' added with ID {task_id}.")
 
 
@@ -70,11 +70,25 @@ def complete_task(task_id):
     Marks the task with the given ID as completed.
     :param task_id: ID of the task to complete
     """
-    tasks = load_tasks()  # Load all tasks
+    tasks = load_tasks()
     for task in tasks:
         if task["id"] == task_id:
-            task["status"] = "Completed"  # Update status
-            save_tasks(tasks)  # Save updated list
+            task["status"] = "Completed"
+            save_tasks(tasks)
             print(f"Task {task_id} marked as completed.")
             return
-    print(f"Task with ID {task_id} not found.")  # If no task matches the ID
+    print(f"Task with ID {task_id} not found.")
+
+
+def delete_task(task_id):
+    """
+    Deletes the task with the given ID.
+    :param task_id: ID of the task to delete
+    """
+    tasks = load_tasks()
+    updated_tasks = [task for task in tasks if task["id"] != task_id]
+    if len(tasks) == len(updated_tasks):
+        print(f"Task with ID {task_id} not found.")
+    else:
+        save_tasks(updated_tasks)
+        print(f"Task {task_id} deleted.")

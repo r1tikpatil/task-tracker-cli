@@ -1,5 +1,5 @@
 import argparse
-from task_manager import add_task, list_tasks, complete_task
+from task_manager import add_task, list_tasks, complete_task, delete_task
 
 
 def main():
@@ -31,6 +31,10 @@ def main():
         "id", type=int, help="ID of the task to mark as completed"
     )
 
+    # Parser for the 'delete' command
+    delete_parser = subparsers.add_parser("delete", help="Delete a task")
+    delete_parser.add_argument("id", type=int, help="ID of the task to delete")
+
     # Parse the arguments provided by the user
     args = parser.parse_args()
 
@@ -41,6 +45,8 @@ def main():
         list_tasks()
     elif args.command == "complete":
         complete_task(args.id)
+    elif args.command == "delete":
+        delete_task(args.id)
 
 
 # Run the main function when the script is executed directly
