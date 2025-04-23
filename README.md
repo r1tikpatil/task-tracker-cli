@@ -24,33 +24,30 @@ task_tracker/
 ├── main.py # CLI entry point
 ├── task_manager.py # Functions to add, viewm delete, mark complete
 ├── storage.py # Functions to read/write JSON file
-├── tasks.json # Stores task data
-└── README.md # Instructions & how to run
+ tasks.json # Stores task data
+├── README.md # Instructions & how to run
+├── .gitignore
+├── demo # output images data
+└── requirements.txt
 ```
-
-## 🖼️ Demo / Screenshot
-
-![alt text](demo/image-2.png)
-
-![alt text](demo/image-3.png)
-
-![alt text](demo/image.png)
-
-![alt text](demo/image-4.png)
-
----
 
 ## 🚀 Getting Started
 
 Follow these simple steps to set up and start using the Task Tracker CLI.
 
-### ✅ 1. Navigate to Project Folder
+### 1. Clone the repository
 
 ```bash
-cd path/to/task_tracker
+git clone https://github.com/r1tikpatil/task-tracker-cli.git
 ```
 
-### 🐍 2. Set Up Virtual Environment
+### ✅ 2. Navigate to Project Folder
+
+```bash
+cd task-tracker-cli
+```
+
+### 🐍 3. Set Up Virtual Environment
 
 ```bash
 python -m venv venv
@@ -62,13 +59,13 @@ source venv/bin/activate # For Linux/Mac
 venv\Scripts\activate # For Windows
 ```
 
-### 3. Install Dependencies
+### 4. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### ⚙️ 4. Run the CLI App
+### ⚙️ 5. Run the CLI App
 
 #### 🆕 Add a Task
 
@@ -94,8 +91,22 @@ python main.py complete 1
 python main.py delete 1
 ```
 
-### 🧼 5. (Optional) Reset Task File
+### 🧼 6. (Optional) Reset Task File
 
 ```bash
 echo "[]" > tasks.json
 ```
+
+---
+
+## 🖼️ Demo / Screenshot
+
+![alt text](demo/image-2.png)
+
+![alt text](demo/image-3.png)
+
+![alt text](demo/image.png)
+
+![alt text](demo/image-4.png)
+
+---
