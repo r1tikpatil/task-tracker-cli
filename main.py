@@ -1,5 +1,5 @@
 import argparse
-from task_manager import add_task
+from task_manager import add_task, list_tasks
 
 
 def main():
@@ -22,12 +22,17 @@ def main():
     )
     add_parser.add_argument("--due", default="", help="Optional due date for the task")
 
+    # Parser for the 'list' command
+    subparsers.add_parser("list", help="List all tasks")
+
     # Parse the arguments provided by the user
     args = parser.parse_args()
 
     # Dispatch the appropriate function based on the command
     if args.command == "add":
         add_task(args.title, args.description, args.due)
+    elif args.command == "list":
+        list_tasks()
 
 
 # Run the main function when the script is executed directly
