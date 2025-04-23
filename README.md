@@ -31,6 +31,8 @@ task_tracker/
 └── requirements.txt
 ```
 
+---
+
 ## 🚀 Getting Started
 
 Follow these simple steps to set up and start using the Task Tracker CLI.
