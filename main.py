@@ -1,5 +1,5 @@
 import argparse
-from task_manager import add_task, list_tasks
+from task_manager import add_task, list_tasks, complete_task
 
 
 def main():
@@ -25,6 +25,12 @@ def main():
     # Parser for the 'list' command
     subparsers.add_parser("list", help="List all tasks")
 
+    # Parser for the 'complete' command
+    complete_parser = subparsers.add_parser("complete", help="Mark a task as completed")
+    complete_parser.add_argument(
+        "id", type=int, help="ID of the task to mark as completed"
+    )
+
     # Parse the arguments provided by the user
     args = parser.parse_args()
 
@@ -33,6 +39,8 @@ def main():
         add_task(args.title, args.description, args.due)
     elif args.command == "list":
         list_tasks()
+    elif args.command == "complete":
+        complete_task(args.id)
 
 
 # Run the main function when the script is executed directly

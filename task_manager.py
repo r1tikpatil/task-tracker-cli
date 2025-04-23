@@ -63,3 +63,18 @@ def list_tasks():
 
     # Print the styled table to the terminal
     print(table)
+
+
+def complete_task(task_id):
+    """
+    Marks the task with the given ID as completed.
+    :param task_id: ID of the task to complete
+    """
+    tasks = load_tasks()  # Load all tasks
+    for task in tasks:
+        if task["id"] == task_id:
+            task["status"] = "Completed"  # Update status
+            save_tasks(tasks)  # Save updated list
+            print(f"Task {task_id} marked as completed.")
+            return
+    print(f"Task with ID {task_id} not found.")  # If no task matches the ID
