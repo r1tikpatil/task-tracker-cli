@@ -7,6 +7,7 @@ def main():
     Entry point for the Task Tracker CLI application.
     Parses command-line arguments and invokes the appropriate task function.
     """
+
     parser = argparse.ArgumentParser(description="Task Tracker CLI")
     subparsers = parser.add_subparsers(dest="command")
 
